@@ -1,0 +1,26 @@
+{
+  "name": "devforge-ai-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "DevForge AI - Production AI Software Engineering Platform",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "node dev.js",
+    "dev:api": "npm run dev --workspace=apps/api",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "build": "npm run build --workspace=packages/shared && npm run build --workspace=apps/api && npm run build --workspace=apps/web",
+    "test": "npm run test --workspace=apps/api",
+    "lint": "npm run lint --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.4.5"
+  },
+
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
