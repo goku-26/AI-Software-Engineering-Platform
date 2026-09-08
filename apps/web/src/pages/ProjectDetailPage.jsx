@@ -7,6 +7,7 @@ import {
   ShieldCheck,
   Zap,
   GitBranch,
+  Activity,
   Terminal,
   Code2,
   FileCode,
@@ -17,6 +18,8 @@ import {
   Save,
   Search,
   Maximize2,
+  Network,
+  Server,
 } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
@@ -26,6 +29,11 @@ import { CodeEditor } from '../components/code/CodeEditor';
 import { CodeSearchPanel } from '../components/code/CodeSearchPanel';
 import { AgentPanel } from '../components/agent/AgentPanel';
 import { TestRunnerPanel } from '../components/test/TestRunnerPanel';
+import { SecurityScanPanel } from '../components/security/SecurityScanPanel';
+import { GitDeliveryPanel } from '../components/git/GitDeliveryPanel';
+import { ObservabilityPanel } from '../components/observability/ObservabilityPanel';
+import { DependencyGraphPanel } from '../components/dependency/DependencyGraphPanel';
+import { InfrastructurePanel } from '../components/infrastructure/InfrastructurePanel';
 import { projectService } from '../services/project.service';
 import { codeService } from '../services/code.service';
 
@@ -124,6 +132,10 @@ export const ProjectDetailPage = () => {
     { id: 'debug', label: 'Debug Agent', icon: Zap },
     { id: 'tests', label: 'Test Suite', icon: CheckCircle },
     { id: 'security', label: 'Security Scan', icon: ShieldCheck },
+    { id: 'git', label: 'Git & Delivery', icon: GitBranch },
+    { id: 'observability', label: 'AI Observability', icon: Activity },
+    { id: 'dependency', label: 'Monorepo & Dependencies', icon: Network },
+    { id: 'infrastructure', label: 'Cloud & Infrastructure', icon: Server },
   ];
 
   return (
@@ -316,12 +328,47 @@ export const ProjectDetailPage = () => {
         </div>
       )}
 
-      {activeTab !== 'understand' && activeTab !== 'overview' && activeTab !== 'debug' && activeTab !== 'tests' && (
+      {activeTab === 'security' && (
+        <div className="flex-1 min-h-0">
+          <SecurityScanPanel
+            projectId={id}
+            onPatchApplied={(filePath) => {
+              if (filePath) handleSelectFile(filePath);
+            }}
+          />
+        </div>
+      )}
+
+      {activeTab === 'git' && (
+        <div className="flex-1 min-h-0">
+          <GitDeliveryPanel projectId={id} />
+        </div>
+      )}
+
+      {activeTab === 'observability' && (
+        <div className="flex-1 min-h-0">
+          <ObservabilityPanel projectId={id} />
+        </div>
+      )}
+
+      {activeTab === 'dependency' && (
+        <div className="flex-1 min-h-0">
+          <DependencyGraphPanel projectId={id} />
+        </div>
+      )}
+
+      {activeTab === 'infrastructure' && (
+        <div className="flex-1 min-h-0">
+          <InfrastructurePanel projectId={id} />
+        </div>
+      )}
+
+      {activeTab !== 'understand' && activeTab !== 'overview' && activeTab !== 'debug' && activeTab !== 'tests' && activeTab !== 'security' && activeTab !== 'git' && activeTab !== 'observability' && activeTab !== 'dependency' && activeTab !== 'infrastructure' && (
         <Card className="text-center py-16 space-y-3">
-          <Badge variant="info">PHASE 5 TEST ENGINE ACTIVE</Badge>
+          <Badge variant="info">PHASE 10 ENTERPRISE ENGINE ACTIVE</Badge>
           <h3 className="text-lg font-semibold text-slate-200 uppercase tracking-wide">{activeTab} MODULE</h3>
           <p className="text-xs text-slate-400 max-w-md mx-auto">
-            {activeTab} automated security vulnerability scanner will connect in upcoming implementation phases.
+            {activeTab} module will connect in upcoming implementation phases.
           </p>
         </Card>
       )}

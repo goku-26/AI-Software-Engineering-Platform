@@ -19,3 +19,8 @@ __exportStar(require("./types/project.types"), exports);
 __exportStar(require("./types/api.types"), exports);
 __exportStar(require("./types/agent.types"), exports);
 __exportStar(require("./types/test.types"), exports);
+__exportStar(require("./types/security.types"), exports);
+__exportStar(require("./types/git.types"), exports);
+__exportStar(require("./types/observability.types"), exports);
+__exportStar(require("./types/dependency.types"), exports);
+__exportStar(require("./types/infrastructure.types"), exports);

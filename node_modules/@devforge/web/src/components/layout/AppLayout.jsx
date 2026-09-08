@@ -104,7 +104,7 @@ export const AppLayout = ({ children }) => {
           <div className="flex items-center gap-3">
             <Badge variant="info" className="gap-1.5">
               <Sparkles className="w-3 h-3 text-cyan-400" />
-              <span>Phase 5 — Automated Test Engine</span>
+              <span>Phase 10 — Enterprise Cloud Infrastructure &amp; Production Release Engine</span>
             </Badge>
           </div>
           <div className="flex items-center gap-4 text-xs text-slate-400">

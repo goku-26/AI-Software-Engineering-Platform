@@ -3,5 +3,14 @@ export * from './types/project.types';
 export * from './types/api.types';
 export * from './types/agent.types';
 export * from './types/test.types';
+export * from './types/security.types';
+export * from './types/git.types';
+export * from './types/observability.types';
+export * from './types/dependency.types';
+export * from './types/infrastructure.types';
+
+
+
+
 
 

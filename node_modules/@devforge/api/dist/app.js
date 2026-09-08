@@ -10,6 +10,13 @@ const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
 const project_routes_1 = __importDefault(require("./routes/project.routes"));
 const github_routes_1 = __importDefault(require("./routes/github.routes"));
 const code_routes_1 = __importDefault(require("./routes/code.routes"));
+const agent_routes_1 = __importDefault(require("./routes/agent.routes"));
+const test_routes_1 = __importDefault(require("./routes/test.routes"));
+const security_routes_1 = __importDefault(require("./routes/security.routes"));
+const git_routes_1 = __importDefault(require("./routes/git.routes"));
+const observability_routes_1 = __importDefault(require("./routes/observability.routes"));
+const dependency_routes_1 = __importDefault(require("./routes/dependency.routes"));
+const infrastructure_routes_1 = __importDefault(require("./routes/infrastructure.routes"));
 const error_middleware_1 = require("./middleware/error.middleware");
 const response_formatter_1 = require("./utils/response-formatter");
 const createApp = () => {
@@ -24,6 +31,13 @@ const createApp = () => {
     // API v1 Routes
     app.use('/api/auth', auth_routes_1.default);
     app.use('/api/projects', code_routes_1.default);
+    app.use('/api/projects', agent_routes_1.default);
+    app.use('/api/projects', test_routes_1.default);
+    app.use('/api/projects', security_routes_1.default);
+    app.use('/api/projects', git_routes_1.default);
+    app.use('/api/projects', observability_routes_1.default);
+    app.use('/api/projects', dependency_routes_1.default);
+    app.use('/api/projects', infrastructure_routes_1.default);
     app.use('/api/projects', project_routes_1.default);
     app.use('/api/github', github_routes_1.default);
     // Centralized Error Handling

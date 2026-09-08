@@ -15,11 +15,11 @@ router.post('/', (0, validate_middleware_1.validate)([
     (0, express_validator_1.body)('branch').optional().isString(),
     (0, express_validator_1.body)('framework').optional().isIn(['react', 'express', 'nextjs', 'node', 'python', 'unknown']),
 ]), project_controller_1.createProject);
-router.get('/:id', (0, validate_middleware_1.validate)([(0, express_validator_1.param)('id').isMongoId().withMessage('Invalid project ID')]), project_controller_1.getProjectById);
+router.get('/:id', (0, validate_middleware_1.validate)([(0, express_validator_1.param)('id').notEmpty().withMessage('Invalid project ID')]), project_controller_1.getProjectById);
 router.put('/:id', (0, validate_middleware_1.validate)([
-    (0, express_validator_1.param)('id').isMongoId().withMessage('Invalid project ID'),
+    (0, express_validator_1.param)('id').notEmpty().withMessage('Invalid project ID'),
     (0, express_validator_1.body)('name').optional().trim().notEmpty(),
     (0, express_validator_1.body)('status').optional().isIn(['active', 'archived', 'indexing', 'error']),
 ]), project_controller_1.updateProject);
-router.delete('/:id', (0, validate_middleware_1.validate)([(0, express_validator_1.param)('id').isMongoId().withMessage('Invalid project ID')]), project_controller_1.deleteProject);
+router.delete('/:id', (0, validate_middleware_1.validate)([(0, express_validator_1.param)('id').notEmpty().withMessage('Invalid project ID')]), project_controller_1.deleteProject);
 exports.default = router;
